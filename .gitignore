@@ -1,0 +1,9 @@
+dwm/drw.o
+dwm/dwm
+dwm/dwm.o
+dwm/util.o
+dwmstatus/dwmstatus
+dwmstatus/dwmstatus.o
+slock/explicit_bzero.o
+slock/slock
+slock/slock.o

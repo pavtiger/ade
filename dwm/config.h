@@ -36,8 +36,12 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",    NULL,       NULL,       2,       0,           -1 },
-	{ "EscapeFromTwilight",        NULL,       NULL,       0,       1,           -1 },
+	{ "Firefox",    NULL,       NULL,       1,       0,           0 },
+    { "cool-retro-term",    NULL,       NULL,       2,       0,           0 },
+    { "Nemo",    NULL,       NULL,       4,       0,           0 },
+    { "TelegramDesktop",    NULL,       NULL,       8,       0,           0 },
+    { "Blueman-manager",    NULL,       NULL,       256,       0,           0 },
+    { "Pavucontrol",    NULL,       NULL,       256,       0,           0 },
 };
 
 /* layout(s) */
@@ -67,10 +71,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_breeze, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "cool-retro-term", NULL };
 static const char *filescmd[] = { "thunar", NULL };
 
 static const char *swap_wallpaper[] = { "wallpapergen", NULL };
+static const char *swap_wallpaper_to_sfw[] = { "wallpapergen", "--sfw", NULL };
+static const char *swap_wallpaper_move_right[] = { "wallpapergen", "--right", NULL };
+static const char *swap_wallpaper_move_left[] = { "wallpapergen", "--left", NULL };
 
 static const char *up_vol[]   = { "/usr/bin/pactl", "set-sink-volume", "alsa_output.pci-0000_2b_00.4.analog-stereo", "+5%",     NULL };
 static const char *down_vol[] = { "/usr/bin/pactl", "set-sink-volume", "alsa_output.pci-0000_2b_00.4.analog-stereo", "-5%",     NULL };
@@ -86,7 +93,10 @@ static Key keys[] = {
 	{ MODKEY,               XK_p,                       spawn,          { .v = dmenucmd } },
     { MODKEY,               XK_Return,                  spawn,          { .v = termcmd } },
     { MODKEY,               XK_e,                       spawn,          { .v = filescmd } },
-	{ MODKEY,               XK_w,                       spawn,          { .v = swap_wallpaper } },
+	{ MODKEY,               XK_w,                       spawn,          { .v = swap_wallpaper } },  // generate new background images
+    { MODKEY,               XK_s,                       spawn,          { .v = swap_wallpaper_to_sfw } },  // safe for work mode
+    { MODKEY,               XK_F11,                     spawn,          { .v = swap_wallpaper_move_left } },  // move right (or up)
+    { MODKEY,               XK_F12,                     spawn,          { .v = swap_wallpaper_move_right } },  // move left (or down) 
 
     // Close program
 	{ MODKEY|ShiftMask,     XK_c,                       killclient,     {0} },

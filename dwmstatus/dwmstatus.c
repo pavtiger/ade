@@ -331,7 +331,7 @@ int main(void)
     for (;; usleep(500 * 1000))
     {
         avgs = loadavg();
-        bat = getbattery("/sys/class/power_supply/BAT1");
+        bat = getbattery("/sys/class/power_supply/BAT0");
         tmmsk = mktimes("%H:%M:%S %d/%b/%Y", tzmoscow);
 
         player = get_player_status();
@@ -364,12 +364,12 @@ int main(void)
 
         // battery
         // status = add_to_string(status, "\x08");
-        if (!strcmp(bat, " "))
-        {
-            char *battery_info = smprintf("   : %s ", bat);
-            status = add_to_string(status, battery_info);
-            free(battery_info);
-        };
+	//if (!strcmp(bat, " "))
+        //{
+        char *battery_info = smprintf("   : %s ", bat);
+        status = add_to_string(status, battery_info);
+        free(battery_info);
+        //};
 
         // time
         status = add_to_string(status, "^c#50B38D^");
