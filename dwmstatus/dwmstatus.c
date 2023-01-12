@@ -187,7 +187,7 @@ get_volume()
 {
     FILE *fp;
     char buf[8];
-    fp = popen("getvolume", "r");
+    fp = popen("/home/pavtiger/System/ade/dwmstatus/get_volume.sh", "r");
     if (fp == NULL)
     {
         printf("Failed to run command\n");

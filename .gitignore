@@ -7,3 +7,4 @@ dwmstatus/dwmstatus.o
 slock/explicit_bzero.o
 slock/slock
 slock/slock.o
+
